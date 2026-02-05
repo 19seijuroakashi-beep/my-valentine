@@ -78,15 +78,17 @@ function createFlower(gift, fromTop = true) {
     flower.textContent = "🌸";
 
     flower.style.fontSize = 15 + Math.random() * 25 + "px";
+    flower.style.position = "fixed";   // <-- make it fixed
     flower.style.top = fromTop ? "10px" : "calc(100% - 30px)";
     flower.style.left = Math.random() * 90 + "%";
     flower.style.animationDuration = 5 + Math.random() * 5 + "s";
     flower.style.animationName = fromTop ? "floatTop" : "floatBottom";
 
-    gift.appendChild(flower);
+    document.body.appendChild(flower);  // <-- append to body
 
     setTimeout(() => flower.remove(), (parseFloat(flower.style.animationDuration) * 1000) + 100);
 }
+
 
 function startFlowers(gift) {
     setInterval(() => createFlower(gift, true), 800);   

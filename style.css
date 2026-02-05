@@ -76,6 +76,8 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2rem; margin-bottom: 15px; 
     margin: 10px 0;
     color: #ffe6f0;
     text-align: left;
+    position: relative; 
+
 }
 
 
