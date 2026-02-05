@@ -9,55 +9,79 @@
 <body>
 
 <div class="main-container">
-
     <div class="question-box">
-        <h1>Would you like to be my Valentine?</h1>
 
-        <div class="buttons">
+        <h1 id="mainTitle">Would you like to be my Valentine?</h1>
+
+        <div class="buttons" id="choiceButtons">
             <button id="yesButton">Yes</button>
             <button id="noButton">No</button>
         </div>
 
-        <p id="messageBox"></p>
-    </div>
+        <div id="messageBox"></div>
 
+        <!-- Main GIF -->
+       
+
+        <!-- GIFT BUTTONS -->
+        <div class="gift-buttons" id="giftButtons">
+            <button id="giftLetter">💌 Letter</button>
+            <button id="giftHugs"> 💋 Kisses</button>
+            <button id="giftFlower">🌹 Flower</button>
+        </div>
+
+        <!-- LETTER POPUP -->
+        <div class="gift-container" id="letterContainer">
+            <h2>To my pretty wifey, Sol 💖</h2>
+
+            <p>
+                I know I’m not a romantic person and I’m really awkward, but I just want to say
+                how much I appreciate you.
+            </p>
+
+            <p>
+                I love everything about you — your voice, eyes, hair, your pretty smile,
+                and your sweet laugh. I also like you being matampuhin, ma attitude only sakin,
+                your hundred personalities. I’m really happy I met you.
+            </p>
+
+            <p>
+                Thank you for staying with me through ups and downs.
+                I wish you happiness every day.
+            </p>
+
+            <p>
+                I love you so soo much.
+            </p>
+
+            <p class="signature">
+                Your wifeyy,<br>
+                <strong>Cel</strong>
+            </p>
+
+            <button class="okButton">OK 💕</button>
+        </div>
+
+        <!-- FLOWER POPUP -->
+        <div class="gift-container" id="flowerContainer">
+            <img src="flower.jpg" alt="Flower">
+            <p>Just a small flower for my pretty wifey 🌷</p>
+            <button class="okButton">OK 💕</button>
+        </div>
+
+        <!-- KISSES POPUP -->
+        <div class="gift-container" id="hugsContainer">
+            <img src="kiss.gif" alt="Kisses">
+            <p>Unlimited kisses just for you 💋</p>
+            <button class="okButton">OK 💕</button>
+        </div>
+
+    </div>
 </div>
 
-<!-- 💌 LOVE LETTER OVERLAY -->
-<div class="overlay" id="overlay">
-    <div class="love-letter">
-        <h2>To My Valentine 💖</h2>
-
-        <p>
-            From the moment you came into my life,
-            everything started to feel warmer and brighter.
-        </p>
-
-        <p>
-            I appreciate you more than words can explain —
-            your smile, your kindness, your presence,
-            and the way you make ordinary moments feel special.
-        </p>
-
-        <p>
-            Loving you is not just a feeling,
-            it’s a choice I would make again and again.
-        </p>
-
-        <p>
-            Thank you for being you.
-            Thank you for existing.
-            Thank you for saying yes.
-        </p>
-
-        <p class="signature">
-            With all my heart,<br>
-            <strong>Your Wifey</strong>
-        </p>
-
-        <button id="closeLetter">💗 Close</button>
-    </div>
-</div>
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <script src="script.js"></script>
 </body>

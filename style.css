@@ -1,146 +1,133 @@
+/* --- Page Layout --- */
 body {
     margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
-    background: #ffd6e8;
+    background: linear-gradient(to bottom right, #ffe6f0, #ffd6e8);
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.question-box {
+    background: url('background.gif') center/cover no-repeat;
+    max-width: 500px;
+    padding: 35px 20px;
+    border-radius: 25px;
+    color: white;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     overflow: hidden;
 }
 
-.main-container {
-    margin-top: 60px;
-}
-
-/* 🌷 Tulip image container */
-.question-box {
-    background: url('background.jpg') no-repeat center center;
-    background-size: cover;
-    width: 90%;
-    max-width: 500px;
-    margin: auto;
-    padding: 40px;
-    border-radius: 25px;
-    position: relative;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    color: white;
-}
-
-/* Dark overlay for readability */
 .question-box::before {
     content: "";
     position: absolute;
     inset: 0;
     background: rgba(0,0,0,0.35);
-    border-radius: 25px;
     z-index: 1;
 }
 
-.question-box h1,
-.buttons,
-#messageBox {
+.question-box * {
     position: relative;
     z-index: 2;
 }
 
-.buttons {
+.buttons,
+.gift-buttons {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 button {
-    padding: 14px 30px;
-    font-size: 18px;
-    border-radius: 12px;
+    width: 120px;
+    height: 50px;
+    border-radius: 30px;
     border: none;
+    font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
 }
 
-#yesButton {
-    background-color: #ff4d88;
+#yesButton,
+.gift-buttons button,
+.okButton {
+    background: #ff4d88;
     color: white;
-}
-
-#yesButton:hover {
-    transform: scale(1.1);
-    background-color: #ff6fa5;
 }
 
 #noButton {
-    background-color: #ff8080;
+    background: #ff8080;
     color: white;
-    position: relative;
+}
+
+button:hover {
+    transform: scale(1.05);
 }
 
 #messageBox {
-    margin-top: 20px;
-    font-size: 18px;
+    margin-top: 15px;
+    min-height: 22px;
     font-weight: bold;
     color: #ffd1e8;
-    min-height: 24px;
 }
 
-/* 💌 OVERLAY */
-.overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
+.gift-buttons {
     display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
 }
 
-/* 💖 LETTER BOX */
-.love-letter {
-    background: #fff0f6;
+/* --- Popup Gift Containers --- */
+.gift-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 90%;
-    max-width: 600px;
-    padding: 30px;
+    max-width: 500px;
+    background: linear-gradient(145deg, #d6336c, #a80044);
+    color: white;
+    padding: 25px 20px;
     border-radius: 25px;
-    text-align: left;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    animation: fadeIn 0.8s ease;
-}
-
-.love-letter h2 {
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    z-index: 1000;
     text-align: center;
-    color: #ff4d88;
 }
 
-.love-letter p {
-    font-size: 17px;
-    line-height: 1.7;
-    color: #333;
+.gift-container img {
+    max-width: 80%;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 15px;
     margin-bottom: 15px;
 }
 
-.signature {
-    text-align: right;
-    color: #ff4d88;
-}
-
-.love-letter button {
-    display: block;
-    margin: 20px auto 0;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 20px;
-    background: #ff4d88;
-    color: white;
+.okButton {
+    margin-top: 20px;
+    padding: 10px 20px;
     font-size: 16px;
-    cursor: pointer;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.85);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+/* --- Floating Flowers --- */
+.floating-flower {
+    position: absolute;
+    font-size: 20px;
+    pointer-events: none;
+    z-index: 1001;
+    animation-timing-function: linear;
+}
+
+@keyframes floatTop {
+    0% { transform: translateX(-10%) translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateX(110%) translateY(0) rotate(360deg); opacity: 0; }
+}
+
+@keyframes floatBottom {
+    0% { transform: translateX(110%) translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateX(-10%) translateY(0) rotate(-360deg); opacity: 0; }
 }

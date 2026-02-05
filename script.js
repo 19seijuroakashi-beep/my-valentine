@@ -1,63 +1,92 @@
-// 🌸 PASSWORD PROTECTION
-const password = "JANUARY16"; // Your monthiversary
-const entered = prompt("Enter the secret code for our Valentine 💖:");
+// PASSWORD (case-insensitive)
+const correctPassword = "january16";
+const entered = prompt("Enter the secret code 💖");
 
-if (!entered || entered.toUpperCase() !== password.toUpperCase()) {
-    // Wrong or empty password → block access
-    alert("Access denied 💔");
-    document.body.innerHTML = "<h2 style='text-align:center; margin-top:50px;'>Access Denied 💔</h2>";
+if (!entered || entered.toLowerCase() !== correctPassword) {
+    document.body.innerHTML =
+        "<h2 style='text-align:center;margin-top:60px;'>Access Denied 💔</h2>";
 } else {
-    // ✅ Correct password → enable Valentine interactions
 
-    const yesButton = document.getElementById("yesButton");
-    const noButton = document.getElementById("noButton");
-    const overlay = document.getElementById("overlay");
-    const closeLetter = document.getElementById("closeLetter");
+    const title = document.getElementById("mainTitle");
+    const yesBtn = document.getElementById("yesButton");
+    const noBtn = document.getElementById("noButton");
+    const choiceButtons = document.getElementById("choiceButtons");
     const messageBox = document.getElementById("messageBox");
 
-    const messages = [
-        "Please say yes 🥺",
-        "Only yes is the correct answer 😎",
-        "I hate rejection 😭",
-        "You have no choice 😏",
-        "Yes looks better on you 💕"
-    ];
+    const giftButtons = document.getElementById("giftButtons");
+    const letter = document.getElementById("letterContainer");
+    const flower = document.getElementById("flowerContainer");
+    const hugs = document.getElementById("hugsContainer");
 
-    // YES → show love letter overlay
-    yesButton.addEventListener("click", () => {
-        overlay.style.display = "flex";
-    });
+    // Background music
+    const bgMusic = new Audio("music.mp3");
+    bgMusic.loop = true;
+    bgMusic.volume = 0.3;
 
-    // Close letter + reset No button & message
-    closeLetter.addEventListener("click", () => {
-        overlay.style.display = "none";
-
-        // Reset No button position
-        noButton.style.position = "relative";
-        noButton.style.left = "0px";
-        noButton.style.top = "0px";
-
-        // Clear the message below buttons
+    // YES CLICK
+    yesBtn.onclick = () => {
+        title.textContent = "My pretty wifey’s gifts & letter 💝";
+        choiceButtons.style.display = "none";
         messageBox.textContent = "";
+        giftButtons.style.display = "flex";
+        bgMusic.play();
+    };
+
+    // NO CLICK
+    noBtn.onclick = () => {
+        messageBox.textContent = "Only yes is accepted 💕";
+    };
+
+    // Show popup
+    function showGift(gift) {
+        // Hide all gifts first
+        letter.style.display = "none";
+        flower.style.display = "none";
+        hugs.style.display = "none";
+
+        // Clear existing flowers
+        gift.querySelectorAll(".floating-flower").forEach(f => f.remove());
+
+        // Show the selected gift
+        gift.style.display = "block";
+
+        // Start continuous floating flowers
+        startFlowers(gift);
+    }
+
+    // OK BUTTON
+    document.querySelectorAll(".okButton").forEach(btn => {
+        btn.onclick = () => {
+            letter.style.display = "none";
+            flower.style.display = "none";
+            hugs.style.display = "none";
+        };
     });
 
-    // NO → dodge + message below buttons
-    noButton.addEventListener("mouseenter", () => {
-        const box = document.querySelector(".question-box");
-        const boxRect = box.getBoundingClientRect();
+    // Gift button clicks
+    document.getElementById("giftLetter").onclick = () => showGift(letter);
+    document.getElementById("giftFlower").onclick = () => showGift(flower);
+    document.getElementById("giftHugs").onclick = () => showGift(hugs);
 
-        const maxX = boxRect.width - noButton.offsetWidth;
-        const maxY = boxRect.height - noButton.offsetHeight;
+    // --- Floating flowers ---
+    function createFlower(gift, fromTop = true) {
+        const flower = document.createElement("div");
+        flower.className = "floating-flower";
+        flower.textContent = "🌸";
 
-        const randomX = Math.random() * maxX;
-        const randomY = Math.random() * maxY;
+        flower.style.fontSize = 15 + Math.random() * 25 + "px";
+        flower.style.top = fromTop ? "10px" : "calc(100% - 30px)";
+        flower.style.left = Math.random() * 90 + "%";
+        flower.style.animationDuration = 5 + Math.random() * 5 + "s";
+        flower.style.animationName = fromTop ? "floatTop" : "floatBottom";
 
-        noButton.style.position = "absolute";
-        noButton.style.left = randomX + "px";
-        noButton.style.top = randomY + "px";
+        gift.appendChild(flower);
 
-        // Show a random playful message below buttons
-        const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-        messageBox.textContent = randomMsg;
-    });
+        setTimeout(() => flower.remove(), (parseFloat(flower.style.animationDuration) * 1000) + 100);
+    }
+
+    function startFlowers(gift) {
+        setInterval(() => createFlower(gift, true), 800);   // top flowers
+        setInterval(() => createFlower(gift, false), 1200); // bottom flowers
+    }
 }
