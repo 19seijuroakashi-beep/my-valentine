@@ -1,19 +1,38 @@
-/* --- Page Layout --- */
+/* --- Base Layout --- */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom right, #ffe6f0, #ffd6e8);
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #ffc1e3);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    color: #FFFFFF;
+    overflow-x: hidden;
+    position: relative;
 }
+
+/* Cute floating hearts in background */
+body::before {
+    content: "❤️ 💖 💕 💘 💝";
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.1;
+    animation: heartsFloat 20s linear infinite;
+}
+
+@keyframes heartsFloat {
+    0% { transform: translateY(100%) translateX(0) rotate(0deg); }
+    100% { transform: translateY(-150%) translateX(50%) rotate(360deg); }
+}
+
+.main-container { padding: 20px; }
 
 .question-box {
     background: url('background.gif') center/cover no-repeat;
     max-width: 500px;
-    padding: 35px 20px;
+    padding: 25px 20px 40px 20px;
     border-radius: 25px;
     color: white;
     position: relative;
@@ -25,61 +44,65 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.25);
     z-index: 1;
 }
 
-.question-box * {
-    position: relative;
-    z-index: 2;
+.question-box * { position: relative; z-index: 2; }
+
+/* --- Typography --- */
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 
-.buttons,
-.gift-buttons {
+h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+p { line-height: 1.6; margin: 12px 0; font-size: 1.1rem; }
+.signature { font-weight: bold; }
+
+/* --- Buttons --- */
+button {
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+#yesButton, #noButton, .gift-buttons button, .okButton {
+    background: linear-gradient(to right, #E90272, #FA30A2);
+    color: white;
+    border-radius: 30px;
+    padding: 12px 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+button:hover { transform: scale(1.05); opacity: 0.95; }
+
+.buttons, .gift-buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin-top: 20px;
 }
 
-button {
-    width: 120px;
-    height: 50px;
-    border-radius: 30px;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#yesButton,
-.gift-buttons button,
-.okButton {
-    background: #ff4d88;
-    color: white;
-}
-
-#noButton {
-    background: #ff8080;
-    color: white;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-
 #messageBox {
     margin-top: 15px;
     min-height: 22px;
     font-weight: bold;
-    color: #ffd1e8;
+    color: #FFD1E8;
 }
 
-.gift-buttons {
-    display: none;
-}
+.gift-buttons { display: none; }
 
-/* --- Popup Gift Containers --- */
+/* --- Gift Popups --- */
 .gift-container {
     display: none;
     position: fixed;
@@ -89,12 +112,12 @@ button:hover {
     width: 90%;
     max-width: 500px;
     background: linear-gradient(145deg, #d6336c, #a80044);
-    color: white;
-    padding: 25px 20px;
-    border-radius: 25px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    border: 2px solid #FFA3C9;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     z-index: 1000;
     text-align: center;
+    padding: 25px 20px;
 }
 
 .gift-container img {
@@ -105,13 +128,7 @@ button:hover {
     margin-bottom: 15px;
 }
 
-.okButton {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-}
-
-/* --- Floating Flowers --- */
+/* --- Floating flowers --- */
 .floating-flower {
     position: absolute;
     font-size: 20px;
@@ -130,4 +147,62 @@ button:hover {
     0% { transform: translateX(110%) translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
     100% { transform: translateX(-10%) translateY(0) rotate(-360deg); opacity: 0; }
+}
+
+/* --- Password Modal --- */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #d6336c, #a80044);
+    padding: 30px 25px;
+    border-radius: 25px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    max-width: 400px;
+    width: 90%;
+    animation: popupAppear 0.5s ease forwards;
+}
+
+.modal-content input {
+    width: 80%;
+    padding: 10px 12px;
+    margin: 15px 0;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.modal-content button {
+    background: linear-gradient(to right, #E90272, #FA30A2);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-content button:hover { transform: scale(1.05); opacity: 0.9; }
+
+@keyframes popupAppear {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    button { width: 100%; }
 }

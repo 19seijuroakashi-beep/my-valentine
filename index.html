@@ -4,9 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yes or Yes 💖</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- Password Modal -->
+<div id="passwordModal" class="modal">
+    <div class="modal-content">
+        <h2>💖 Secret Code 💖</h2>
+        <p>Enter the secret code to unlock your Valentine surprise:</p>
+        <input type="password" id="passwordInput" placeholder="Enter secret code">
+        <button id="submitPassword">Unlock 💌</button>
+    </div>
+</div>
 
 <div class="main-container">
     <div class="question-box">
@@ -20,13 +33,10 @@
 
         <div id="messageBox"></div>
 
-        <!-- Main GIF -->
-       
-
         <!-- GIFT BUTTONS -->
         <div class="gift-buttons" id="giftButtons">
             <button id="giftLetter">💌 Letter</button>
-            <button id="giftHugs"> 💋 Kisses</button>
+            <button id="giftHugs">💋 Kisses</button>
             <button id="giftFlower">🌹 Flower</button>
         </div>
 
