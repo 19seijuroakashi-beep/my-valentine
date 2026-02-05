@@ -51,10 +51,7 @@ function showGift(gift) {
     flower.style.display = "none";
     hugs.style.display = "none";
 
-    gift.querySelectorAll(".floating-flower").forEach(f => f.remove());
     gift.style.display = "block";
-
-    startFlowers(gift);
 }
 
 // OK BUTTON
@@ -72,25 +69,35 @@ document.getElementById("giftFlower").onclick = () => showGift(flower);
 document.getElementById("giftHugs").onclick = () => showGift(hugs);
 
 // --- Floating flowers ---
-function createFlower(gift, fromTop = true) {
+// Flower layer
+const flowerLayer = document.getElementById("flowerLayer");
+
+// Create a flower in the flowerLayer (not inside gifts)
+function createFlower(fromTop = true) {
     const flower = document.createElement("div");
     flower.className = "floating-flower";
     flower.textContent = "🌸";
 
     flower.style.fontSize = 15 + Math.random() * 25 + "px";
-    flower.style.position = "fixed";   // <-- make it fixed
-    flower.style.top = fromTop ? "10px" : "calc(100% - 30px)";
+    flower.style.top = fromTop ? "0" : "calc(100% - 30px)";
     flower.style.left = Math.random() * 90 + "%";
     flower.style.animationDuration = 5 + Math.random() * 5 + "s";
     flower.style.animationName = fromTop ? "floatTop" : "floatBottom";
 
-    document.body.appendChild(flower);  // <-- append to body
+    flowerLayer.appendChild(flower);
 
     setTimeout(() => flower.remove(), (parseFloat(flower.style.animationDuration) * 1000) + 100);
 }
 
+// Start flowers only once to prevent interval stacking
+let flowersStarted = false;
+function startFlowersOnce() {
+    if (flowersStarted) return;
+    flowersStarted = true;
 
-function startFlowers(gift) {
-    setInterval(() => createFlower(gift, true), 800);   
-    setInterval(() => createFlower(gift, false), 1200);
+    setInterval(() => createFlower(true), 800);   
+    setInterval(() => createFlower(false), 1200);
 }
+
+// Start floating flowers when page loads
+window.onload = startFlowersOnce;

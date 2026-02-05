@@ -57,11 +57,9 @@ h1 {
 h2 { font-family: 'Great Vibes', cursive; font-size: 2rem; margin-bottom: 15px; }
 
 /* Letter Heading */
-/* Letter Heading */
-/* Letter Heading */
 .letter-content h2 {
-    font-family: 'Great Vibes', cursive;  /* Valentine-style cursive */
-    font-size: 3rem;                     /* bigger & eye-catching */
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
     margin-bottom: 20px;
     color: #ffe6f0;
     text-align: center;
@@ -70,17 +68,14 @@ h2 { font-family: 'Great Vibes', cursive; font-size: 2rem; margin-bottom: 15px; 
 
 /* Letter Content */
 .letter-content p {
-    font-family: 'Patrick Hand', cursive;  /* handwritten, readable */
+    font-family: 'Patrick Hand', cursive;
     font-size: 1.25rem;
     line-height: 1.8;
     margin: 10px 0;
     color: #ffe6f0;
     text-align: left;
-    position: relative; 
-
+    position: relative;
 }
-
-
 
 .signature { font-weight: bold; }
 
@@ -110,7 +105,7 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
 /* --- Gift Popups --- */
 .gift-container {
     display: none;
-    position: fixed;
+    position: fixed; /* stays static on screen */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -140,28 +135,15 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
 }
 
 /* Images */
-.gift-container img { max-width: 80%; max-height: 250px; object-fit: contain; border-radius: 15px; margin-bottom: 15px; }
-
-/* --- Floating flowers --- */
-.floating-flower {
-    position: absolute;
-    font-size: 20px;
-    pointer-events: none;
-    z-index: 1001;
-    animation-timing-function: linear;
-}
-@keyframes floatTop {
-    0% { transform: translateX(-10%) translateY(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    100% { transform: translateX(110%) translateY(0) rotate(360deg); opacity: 0; }
-}
-@keyframes floatBottom {
-    0% { transform: translateX(110%) translateY(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    100% { transform: translateX(-10%) translateY(0) rotate(-360deg); opacity: 0; }
+.gift-container img { 
+    max-width: 80%; 
+    max-height: 250px; 
+    object-fit: contain; 
+    border-radius: 15px; 
+    margin-bottom: 15px; 
 }
 
-/* Password Modal */
+/* --- Password Modal --- */
 .modal {
     position: fixed;
     inset: 0;
@@ -205,7 +187,33 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
 
 @keyframes popupAppear { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
-/* Responsive */
+/* --- Floating flowers --- */
+#flowerLayer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none; /* allows clicks to pass through */
+    overflow: hidden;
+    z-index: 10000; /* above popups */
+}
+
+.floating-flower {
+    position: absolute;
+    will-change: transform, opacity; /* performance optimization */
+}
+
+/* --- Original floating flower animations --- */
+@keyframes floatTop {
+    0% { transform: translateX(-10%) translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateX(110%) translateY(0) rotate(360deg); opacity: 0; }
+}
+@keyframes floatBottom {
+    0% { transform: translateX(110%) translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateX(-10%) translateY(0) rotate(-360deg); opacity: 0; }
+}
+
+/* --- Responsive --- */
 @media (max-width: 600px) {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.5rem; }
