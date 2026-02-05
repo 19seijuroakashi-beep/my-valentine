@@ -13,7 +13,7 @@ body {
     position: relative;
 }
 
-/* Cute floating hearts in background */
+/* Floating hearts background */
 body::before {
     content: "❤️ 💖 💕 💘 💝";
     position: absolute;
@@ -21,7 +21,6 @@ body::before {
     opacity: 0.1;
     animation: heartsFloat 20s linear infinite;
 }
-
 @keyframes heartsFloat {
     0% { transform: translateY(100%) translateX(0) rotate(0deg); }
     100% { transform: translateY(-150%) translateX(50%) rotate(360deg); }
@@ -39,7 +38,6 @@ body::before {
     box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     overflow: hidden;
 }
-
 .question-box::before {
     content: "";
     position: absolute;
@@ -47,27 +45,44 @@ body::before {
     background: rgba(0,0,0,0.25);
     z-index: 1;
 }
-
 .question-box * { position: relative; z-index: 2; }
 
-/* --- Typography --- */
+/* Typography */
 h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 2.8rem;
     margin-top: 0;
     margin-bottom: 15px;
 }
+h2 { font-family: 'Great Vibes', cursive; font-size: 2rem; margin-bottom: 15px; }
 
-h2 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2rem;
-    margin-bottom: 15px;
+/* Letter Heading */
+/* Letter Heading */
+/* Letter Heading */
+.letter-content h2 {
+    font-family: 'Great Vibes', cursive;  /* Valentine-style cursive */
+    font-size: 3rem;                     /* bigger & eye-catching */
+    margin-bottom: 20px;
+    color: #ffe6f0;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
-p { line-height: 1.6; margin: 12px 0; font-size: 1.1rem; }
+/* Letter Content */
+.letter-content p {
+    font-family: 'Patrick Hand', cursive;  /* handwritten, readable */
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin: 10px 0;
+    color: #ffe6f0;
+    text-align: left;
+}
+
+
+
 .signature { font-weight: bold; }
 
-/* --- Buttons --- */
+/* Buttons */
 button {
     border: none;
     cursor: pointer;
@@ -75,7 +90,6 @@ button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
 }
-
 #yesButton, #noButton, .gift-buttons button, .okButton {
     background: linear-gradient(to right, #E90272, #FA30A2);
     color: white;
@@ -83,22 +97,11 @@ button {
     padding: 12px 25px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
-
 button:hover { transform: scale(1.05); opacity: 0.95; }
 
-.buttons, .gift-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
+.buttons, .gift-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
 
-#messageBox {
-    margin-top: 15px;
-    min-height: 22px;
-    font-weight: bold;
-    color: #FFD1E8;
-}
+#messageBox { margin-top: 15px; min-height: 22px; font-weight: bold; color: #FFD1E8; }
 
 .gift-buttons { display: none; }
 
@@ -111,7 +114,7 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
     transform: translate(-50%, -50%);
     width: 90%;
     max-width: 500px;
-    background: linear-gradient(145deg, #d6336c, #a80044);
+    background: linear-gradient(145deg, #a8325e, #7a1f3d);
     border: 2px solid #FFA3C9;
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -120,13 +123,22 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
     padding: 25px 20px;
 }
 
-.gift-container img {
-    max-width: 80%;
-    max-height: 250px;
-    object-fit: contain;
-    border-radius: 15px;
-    margin-bottom: 15px;
+/* Letter content */
+.letter-content {
+    line-height: 1.4;
+    font-size: 0.95rem;
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: left;
+    background: linear-gradient(145deg, #7a1f3d, #a8325e);
+    padding: 20px;
+    border-radius: 20px;
+    color: #ffe6f0;
+    margin: 0 auto;
 }
+
+/* Images */
+.gift-container img { max-width: 80%; max-height: 250px; object-fit: contain; border-radius: 15px; margin-bottom: 15px; }
 
 /* --- Floating flowers --- */
 .floating-flower {
@@ -136,20 +148,18 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
     z-index: 1001;
     animation-timing-function: linear;
 }
-
 @keyframes floatTop {
     0% { transform: translateX(-10%) translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
     100% { transform: translateX(110%) translateY(0) rotate(360deg); opacity: 0; }
 }
-
 @keyframes floatBottom {
     0% { transform: translateX(110%) translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
     100% { transform: translateX(-10%) translateY(0) rotate(-360deg); opacity: 0; }
 }
 
-/* --- Password Modal --- */
+/* Password Modal */
 .modal {
     position: fixed;
     inset: 0;
@@ -159,7 +169,6 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
     align-items: center;
     z-index: 2000;
 }
-
 .modal-content {
     background: linear-gradient(145deg, #d6336c, #a80044);
     padding: 30px 25px;
@@ -171,7 +180,6 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
     width: 90%;
     animation: popupAppear 0.5s ease forwards;
 }
-
 .modal-content input {
     width: 80%;
     padding: 10px 12px;
@@ -181,7 +189,6 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
     outline: none;
     font-size: 1rem;
 }
-
 .modal-content button {
     background: linear-gradient(to right, #E90272, #FA30A2);
     border: none;
@@ -192,15 +199,11 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
     cursor: pointer;
     transition: 0.3s;
 }
-
 .modal-content button:hover { transform: scale(1.05); opacity: 0.9; }
 
-@keyframes popupAppear {
-    0% { transform: scale(0.5); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
+@keyframes popupAppear { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
-/* --- Responsive --- */
+/* Responsive */
 @media (max-width: 600px) {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.5rem; }

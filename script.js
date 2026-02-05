@@ -42,7 +42,7 @@ yesBtn.onclick = () => {
 
 // NO CLICK
 noBtn.onclick = () => {
-    messageBox.textContent = "Only yes is the correct answer 💕";
+    messageBox.textContent = "Only yes is accepted 💕";
 };
 
 // Show popup
