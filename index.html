@@ -12,112 +12,119 @@
 </head>
 <body>
 
-<!-- Flower Layer (floating flowers over everything) -->
+<!-- Floating Flower Layer -->
 <div id="flowerLayer"></div>
 
 <!-- Password Modal -->
 <div id="passwordModal" class="modal">
-    <div class="modal-content">
-        <h2>💖 Secret Code 💖</h2>
-        <p>Enter the secret code to unlock your Valentine surprise:</p>
+    <div class="modal-content romantic-card">
+        <h2 class="script-title">💖 Secret Code 💖</h2>
+        <p class="body-text">Enter the secret code to unlock your Valentine surprise:</p>
         <input type="password" id="passwordInput" placeholder="Enter secret code">
-        <button id="submitPassword">Unlock 💌</button>
+        <button id="submitPassword" class="primary-btn">Unlock 💌</button>
     </div>
 </div>
 
 <div class="main-container">
-    <div class="question-box">
+    <div class="question-box romantic-card">
 
-        <h1 id="mainTitle">Would you like to be my Valentine?</h1>
+        <h1 id="mainTitle" class="script-title">
+            Would you like to be my Valentine?
+        </h1>
 
         <div class="buttons" id="choiceButtons">
-            <button id="yesButton">Yes</button>
-            <button id="noButton">No</button>
+            <button id="yesButton" class="primary-btn">Yes</button>
+            <button id="noButton" class="secondary-btn">No</button>
         </div>
 
-        <div id="messageBox"></div>
+        <div id="messageBox" class="body-text"></div>
 
         <!-- GIFT BUTTONS -->
         <div class="gift-buttons" id="giftButtons">
-            <button id="giftLetter">💌 Letter</button>
-            <button id="giftHugs">💋 Kisses</button>
-            <button id="giftFlower">🌹 Flower</button>
+            <button id="giftLetter" class="gift-btn">💌 Letter</button>
+            <button id="giftHugs" class="gift-btn">💋 Kisses</button>
+            <button id="giftFlower" class="gift-btn">🌹 Flower</button>
         </div>
 
         <!-- LETTER POPUP -->
         <div class="gift-container" id="letterContainer">
-            <div class="letter-content">
-                <h2>To my dearest, Sol 💖</h2>
+            <div class="letter-content romantic-card">
+                <h2 class="script-title">To my dearest, Sol 💖</h2>
 
-                <p>
-                    Wifeyy, first of all, I’m so happy that I met you. The moment I heard your voice
-                    when we played Mobile Legends for the first time, I already liked you.
-                    It’s your voice that made me feel happy that time. Your voice is like a
-                    music to my ears—it gives peace. The fireflies at night dance as soon as
-                    they hear that sweet voice of yours.
-                </p>
+                <div class="letter-body body-text">
+                    <p>
+                        Wifeyy, first of all, I’m so happy that I met you. The moment I heard your voice
+                        when we played Mobile Legends for the first time, I already liked you.
+                        It’s your voice that made me feel happy that time.
+                    </p>
 
-                <p>
-                    Wifey, you know how much I love you. I love everything about you—your voice,
-                    your eyes, your nose, your hair, especially the bangs. You know I always
-                    make fun of it kasi it’s not pantay in the morning when you wake up.
-                </p>
+                    <p>
+                        Your voice is like music to my ears—it gives peace. The fireflies at night
+                        dance as soon as they hear that sweet voice of yours.
+                    </p>
 
-                <p>
-                    I also love your personality. I fell in love with it, and you surprised me
-                    with seven more—but I still love them all.
-                </p>
+                    <p>
+                        Wifey, you know how much I love you. I love everything about you—your voice,
+                        your eyes, your nose, your hair, especially the bangs.
+                    </p>
 
-                <p>
-                    Wifey, thank you for choosing me as your Valentine and your partner for life.
-                    I wish you all the happiness this world could offer. You deserve all the love
-                    and happiness in this world.
-                </p>
+                    <p>
+                        I also love your personality. I fell in love with it, and you surprised me
+                        with seven more—but I still love them all.
+                    </p>
 
-                <p>
-                    I will stay with you and make you happy, even though sometimes I ubos your
-                    patience and I made you upset many times in a week.
-                </p>
+                    <p>
+                        Thank you for choosing me as your Valentine and your partner for life.
+                        You deserve all the happiness in this world.
+                    </p>
 
-                <p>
-                    Always remember that I love you so, so much. I’m yours and you’re mine only.
-                    Sounds obsessive—but yeah. You make me love myself more, and I hope you love
-                    yourself just the same.
-                </p>
+                    <p>
+                        I will stay with you and make you happy, even when I mess up sometimes.
+                    </p>
 
-                <p>
-                    Let’s stay in lovee and grow together despite all the misunderstandings.
-                </p>
+                    <p>
+                        Always remember that I love you so, so much.
+                        I’m yours and you’re mine only.
+                    </p>
 
-                <p>
-                    I look forward to having a future with you.
-                </p>
+                    <p>
+                        Let’s stay in love and grow together despite everything.
+                    </p>
 
-                <p>
-                    I love you so much, my pretty and cutiee wifeyy.
-                </p>
+                    <p>
+                        I look forward to having a future with you.
+                    </p>
 
-                <p class="signature">
+                    <p>
+                        I love you so much, my pretty and cutiee wifeyy.
+                    </p>
+                </div>
+
+                <p class="signature script-title">
                     Your wifey,<br>
                     <strong>Cel</strong>
                 </p>
 
-                <button class="okButton">OK 💕</button>
+                <button class="okButton primary-btn">OK 💕</button>
             </div>
         </div>
 
         <!-- FLOWER POPUP -->
         <div class="gift-container" id="flowerContainer">
-            <img src="flower.jpg" alt="Flower">
-            <p>Just a small flower for my pretty wifey</p>
-            <button class="okButton">OK 💕</button>
+            <div class="romantic-card">
+                <img src="flower.jpg" alt="Flower">
+                <p class="body-text">Just a small flower for my pretty wifey</p>
+                <button class="okButton primary-btn">OK 💕</button>
+            </div>
         </div>
 
         <!-- KISSES POPUP -->
         <div class="gift-container" id="hugsContainer">
-            <img src="kiss.gif" alt="Kisses">
-            <p>Unlimited kisses just for you 💋</p>
-            <button class="okButton">OK 💕</button>
+            <div class="romantic-card">
+                <img src="kiss.gif" alt="Kisses">
+                <p class="body-text">Unlimited kisses just for you 💋</p>
+                <button class="okButton primary-btn">OK 💕</button>
+            </div>
         </div>
 
     </div>

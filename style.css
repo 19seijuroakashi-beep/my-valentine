@@ -1,14 +1,14 @@
 /* --- Base Layout --- */
 body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #ffdde1, #ffc1e3);
+    font-family: 'Patrick Hand', cursive;
+    background: linear-gradient(135deg, #ffe6f0, #ffc1e3);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #FFFFFF;
+    color: #4d0033;
     overflow-x: hidden;
     position: relative;
 }
@@ -18,8 +18,8 @@ body::before {
     content: "❤️ 💖 💕 💘 💝";
     position: absolute;
     font-size: 2rem;
-    opacity: 0.1;
-    animation: heartsFloat 20s linear infinite;
+    opacity: 0.08;
+    animation: heartsFloat 25s linear infinite;
 }
 @keyframes heartsFloat {
     0% { transform: translateY(100%) translateX(0) rotate(0deg); }
@@ -29,90 +29,124 @@ body::before {
 .main-container { padding: 20px; }
 
 .question-box {
-    background: url('background.gif') center/cover no-repeat;
+    background: linear-gradient(145deg, #ffb6c1, #ff85b3);
     max-width: 500px;
-    padding: 25px 20px 40px 20px;
+    padding: 30px 25px 45px 25px;
     border-radius: 25px;
-    color: white;
+    color: #4d0033;
     position: relative;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     overflow: hidden;
 }
 .question-box::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.25);
+    background: rgba(255,255,255,0.15);
     z-index: 1;
 }
 .question-box * { position: relative; z-index: 2; }
 
 /* Typography */
-h1 {
+.script-title {
     font-family: 'Great Vibes', cursive;
-    font-size: 2.8rem;
-    margin-top: 0;
-    margin-bottom: 15px;
+    color: #ff1a75;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
 }
-h2 { font-family: 'Great Vibes', cursive; font-size: 2rem; margin-bottom: 15px; }
+
+.body-text {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #4d0033;
+}
 
 /* Letter Heading */
 .letter-content h2 {
     font-family: 'Great Vibes', cursive;
-    font-size: 3rem;
+    font-size: 2.8rem;
     margin-bottom: 20px;
-    color: #ffe6f0;
+    color: #ff4da6;
     text-align: center;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 /* Letter Content */
 .letter-content p {
-    font-family: 'Patrick Hand', cursive;
-    font-size: 1.25rem;
-    line-height: 1.8;
     margin: 10px 0;
-    color: #ffe6f0;
-    text-align: left;
-    position: relative;
 }
 
-.signature { font-weight: bold; }
+/* Signature */
+.signature {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
 
 /* Buttons */
 button {
     border: none;
     cursor: pointer;
     transition: 0.3s;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Patrick Hand', cursive;
     font-weight: 600;
 }
-#yesButton, #noButton, .gift-buttons button, .okButton {
-    background: linear-gradient(to right, #E90272, #FA30A2);
+
+.primary-btn {
+    background: linear-gradient(to right, #ff4da6, #ff85b3);
     color: white;
     border-radius: 30px;
     padding: 12px 25px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
-button:hover { transform: scale(1.05); opacity: 0.95; }
 
-.buttons, .gift-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+.secondary-btn {
+    background: linear-gradient(to right, #ffb6c1, #ff85b3);
+    color: #4d0033;
+    border-radius: 30px;
+    padding: 12px 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
 
-#messageBox { margin-top: 15px; min-height: 22px; font-weight: bold; color: #FFD1E8; }
+.gift-btn {
+    background: linear-gradient(to right, #ff85b3, #ff4da6);
+    color: white;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+button:hover { 
+    transform: scale(1.05); 
+    opacity: 0.95; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.buttons, .gift-buttons { 
+    display: flex; 
+    justify-content: center; 
+    gap: 15px; 
+    margin-top: 20px; 
+}
+
+#messageBox { 
+    margin-top: 15px; 
+    min-height: 22px; 
+    font-weight: bold; 
+    color: #ff66b3; 
+}
 
 .gift-buttons { display: none; }
 
 /* --- Gift Popups --- */
 .gift-container {
     display: none;
-    position: fixed;       /* stays static */
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
     max-width: 500px;
-    background: linear-gradient(145deg, #a8325e, #7a1f3d);
-    border: 2px solid #FFA3C9;
+    background: linear-gradient(145deg, #ffe6f0, #ffb6c1);
+    border: 2px solid #ff4da6;
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     z-index: 1000;
@@ -122,15 +156,13 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
 
 /* Letter content */
 .letter-content {
-    line-height: 1.4;
-    font-size: 0.95rem;
+    line-height: 1.5;
+    font-size: 1rem;
     max-height: 80vh;
     overflow-y: auto;
     text-align: left;
-    background: linear-gradient(145deg, #7a1f3d, #a8325e);
     padding: 20px;
     border-radius: 20px;
-    color: #ffe6f0;
     margin: 0 auto;
 }
 
@@ -154,11 +186,11 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
     z-index: 2000;
 }
 .modal-content {
-    background: linear-gradient(145deg, #d6336c, #a80044);
+    background: linear-gradient(145deg, #ff85b3, #ff4da6);
     padding: 30px 25px;
     border-radius: 25px;
     text-align: center;
-    color: #fff;
+    color: #4d0033;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     max-width: 400px;
     width: 90%;
@@ -174,7 +206,7 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
     font-size: 1rem;
 }
 .modal-content button {
-    background: linear-gradient(to right, #E90272, #FA30A2);
+    background: linear-gradient(to right, #ff4da6, #ff85b3);
     border: none;
     color: white;
     padding: 10px 20px;
@@ -185,7 +217,10 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
 }
 .modal-content button:hover { transform: scale(1.05); opacity: 0.9; }
 
-@keyframes popupAppear { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes popupAppear { 
+    0% { transform: scale(0.5); opacity: 0; } 
+    100% { transform: scale(1); opacity: 1; } 
+}
 
 /* --- Floating flowers --- */
 #flowerLayer {
@@ -200,8 +235,6 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
     position: absolute;
     will-change: transform, opacity;
 }
-
-/* --- Floating flower animations will be handled by JS using transform & opacity --- */
 
 /* --- Responsive --- */
 @media (max-width: 600px) {
