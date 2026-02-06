@@ -70,24 +70,47 @@ document.getElementById("giftHugs").onclick = () => showGift(hugs);
 
 // --- Floating flowers ---
 // Flower layer
+// Flower layer
 const flowerLayer = document.getElementById("flowerLayer");
+const activeFlowers = [];
+const maxFlowers = 30;
 
-// Create a flower in the flowerLayer (not inside gifts)
-function createFlower(fromTop = true) {
+function createFlower() {
+    if (activeFlowers.length >= maxFlowers) return; // prevent too many flowers
+
     const flower = document.createElement("div");
     flower.className = "floating-flower";
     flower.textContent = "🌸";
 
     flower.style.fontSize = 15 + Math.random() * 25 + "px";
-    flower.style.top = fromTop ? "0" : "calc(100% - 30px)";
+    flower.style.top = Math.random() * 80 + "%"; // anywhere vertically
     flower.style.left = Math.random() * 90 + "%";
-    flower.style.animationDuration = 5 + Math.random() * 5 + "s";
-    flower.style.animationName = fromTop ? "floatTop" : "floatBottom";
-
+    flower.style.transition = "transform 6s linear, opacity 6s linear";
     flowerLayer.appendChild(flower);
+    activeFlowers.push(flower);
 
-    setTimeout(() => flower.remove(), (parseFloat(flower.style.animationDuration) * 1000) + 100);
+    // Animate flower across screen
+    requestAnimationFrame(() => {
+        flower.style.transform = "translateY(-150px) translateX(100px) rotate(360deg)";
+        flower.style.opacity = 0;
+    });
+
+    // Remove flower after animation
+    setTimeout(() => {
+        flower.remove();
+        const index = activeFlowers.indexOf(flower);
+        if (index > -1) activeFlowers.splice(index, 1);
+    }, 6000);
 }
+
+// Smooth loop for creating flowers
+function animateFlowers() {
+    createFlower();
+    requestAnimationFrame(animateFlowers);
+}
+
+// Start flowers once
+animateFlowers();
 
 // Start flowers only once to prevent interval stacking
 let flowersStarted = false;
