@@ -1,25 +1,25 @@
 /* --- Base Layout --- */
 body {
     margin: 0;
-    font-family: 'Patrick Hand', cursive;
-    background: linear-gradient(135deg, #ffe6f0, #ffc1e3);
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #e6f2ff, #cfe8ff);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #4d0033;
+    color: #ffffff;
     overflow-x: hidden;
     position: relative;
 }
 
-/* Floating hearts background */
+/* Soft floating hearts background */
 body::before {
-    content: "❤️ 💖 💕 💘 💝";
+    content: "🤍 💙 🤍 💙";
     position: absolute;
     font-size: 2rem;
     opacity: 0.08;
-    animation: heartsFloat 25s linear infinite;
+    animation: heartsFloat 20s linear infinite;
 }
 @keyframes heartsFloat {
     0% { transform: translateY(100%) translateX(0) rotate(0deg); }
@@ -28,115 +28,112 @@ body::before {
 
 .main-container { padding: 20px; }
 
+/* --- Main Card --- */
 .question-box {
-    background: linear-gradient(145deg, #ffb6c1, #ff85b3);
+    background: linear-gradient(145deg, #1e3c72, #2a5298);
     max-width: 500px;
-    padding: 30px 25px 45px 25px;
+    padding: 25px 20px 40px;
     border-radius: 25px;
-    color: #4d0033;
+    color: white;
     position: relative;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
     overflow: hidden;
 }
+
 .question-box::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.08);
     z-index: 1;
 }
-.question-box * { position: relative; z-index: 2; }
 
-/* Typography */
-.script-title {
-    font-family: 'Great Vibes', cursive;
-    color: #ff1a75;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+.question-box * {
+    position: relative;
+    z-index: 2;
 }
 
-.body-text {
-    font-family: 'Patrick Hand', cursive;
-    font-size: 1.25rem;
-    line-height: 1.8;
-    color: #4d0033;
-}
-
-/* Letter Heading */
-.letter-content h2 {
+/* --- Typography --- */
+h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 2.8rem;
-    margin-bottom: 20px;
-    color: #ff4da6;
+    margin: 0 0 15px;
+    color: #f5fbff;
+}
+
+h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #f0f8ff;
+}
+
+/* --- Letter Styling --- */
+.letter-content h2 {
+    font-size: 3rem;
+    color: #ffffff;
     text-align: center;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
 }
 
-/* Letter Content */
 .letter-content p {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.2rem;
+    line-height: 1.8;
     margin: 10px 0;
+    color: #eaf6ff;
+    text-align: left;
 }
 
-/* Signature */
 .signature {
+    margin-top: 15px;
     font-weight: bold;
-    font-size: 1.4rem;
+    color: #ffffff;
 }
 
-/* Buttons */
+/* --- Buttons --- */
 button {
     border: none;
     cursor: pointer;
     transition: 0.3s;
-    font-family: 'Patrick Hand', cursive;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
 }
 
-.primary-btn {
-    background: linear-gradient(to right, #ff4da6, #ff85b3);
-    color: white;
+#yesButton,
+#noButton,
+.gift-buttons button,
+.okButton {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: #002b45;
     border-radius: 30px;
     padding: 12px 25px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.secondary-btn {
-    background: linear-gradient(to right, #ffb6c1, #ff85b3);
-    color: #4d0033;
-    border-radius: 30px;
-    padding: 12px 25px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+button:hover {
+    transform: scale(1.05);
+    opacity: 0.95;
 }
 
-.gift-btn {
-    background: linear-gradient(to right, #ff85b3, #ff4da6);
-    color: white;
-    border-radius: 25px;
-    padding: 10px 20px;
+.buttons,
+.gift-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-button:hover { 
-    transform: scale(1.05); 
-    opacity: 0.95; 
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
-
-.buttons, .gift-buttons { 
-    display: flex; 
-    justify-content: center; 
-    gap: 15px; 
-    margin-top: 20px; 
-}
-
-#messageBox { 
-    margin-top: 15px; 
-    min-height: 22px; 
-    font-weight: bold; 
-    color: #ff66b3; 
+#messageBox {
+    margin-top: 15px;
+    min-height: 22px;
+    font-weight: bold;
+    color: #d9f1ff;
 }
 
 .gift-buttons { display: none; }
 
-/* --- Gift Popups --- */
+/* --- Gift Popups (STATIC ON ANDROID) --- */
 .gift-container {
     display: none;
     position: fixed;
@@ -145,57 +142,56 @@ button:hover {
     transform: translate(-50%, -50%);
     width: 90%;
     max-width: 500px;
-    background: linear-gradient(145deg, #ffe6f0, #ffb6c1);
-    border: 2px solid #ff4da6;
+    background: linear-gradient(145deg, #0f4c81, #1e6fb6);
+    border: 2px solid #bfe4ff;
     border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     z-index: 1000;
     text-align: center;
     padding: 25px 20px;
 }
 
-/* Letter content */
+/* Letter scroll area */
 .letter-content {
-    line-height: 1.5;
-    font-size: 1rem;
     max-height: 80vh;
     overflow-y: auto;
-    text-align: left;
+    background: linear-gradient(145deg, #1e6fb6, #0f4c81);
     padding: 20px;
     border-radius: 20px;
-    margin: 0 auto;
 }
 
 /* Images */
-.gift-container img { 
-    max-width: 80%; 
-    max-height: 250px; 
-    object-fit: contain; 
-    border-radius: 15px; 
-    margin-bottom: 15px; 
+.gift-container img {
+    max-width: 80%;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 15px;
+    margin-bottom: 15px;
 }
 
 /* --- Password Modal --- */
 .modal {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.65);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2000;
 }
+
 .modal-content {
-    background: linear-gradient(145deg, #ff85b3, #ff4da6);
+    background: linear-gradient(145deg, #1e6fb6, #0f4c81);
     padding: 30px 25px;
     border-radius: 25px;
     text-align: center;
-    color: #4d0033;
+    color: #ffffff;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     max-width: 400px;
     width: 90%;
     animation: popupAppear 0.5s ease forwards;
 }
+
 .modal-content input {
     width: 80%;
     padding: 10px 12px;
@@ -205,24 +201,21 @@ button:hover {
     outline: none;
     font-size: 1rem;
 }
+
 .modal-content button {
-    background: linear-gradient(to right, #ff4da6, #ff85b3);
-    border: none;
-    color: white;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: #002b45;
     padding: 10px 20px;
     border-radius: 25px;
     font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.modal-content button:hover { transform: scale(1.05); opacity: 0.9; }
-
-@keyframes popupAppear { 
-    0% { transform: scale(0.5); opacity: 0; } 
-    100% { transform: scale(1); opacity: 1; } 
 }
 
-/* --- Floating flowers --- */
+@keyframes popupAppear {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- Floating Flowers Layer --- */
 #flowerLayer {
     position: fixed;
     inset: 0;
@@ -239,6 +232,6 @@ button:hover {
 /* --- Responsive --- */
 @media (max-width: 600px) {
     h1 { font-size: 2rem; }
-    h2 { font-size: 1.5rem; }
+    h2 { font-size: 1.6rem; }
     button { width: 100%; }
 }
