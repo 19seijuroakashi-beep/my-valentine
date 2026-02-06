@@ -14,7 +14,7 @@ submitPassword.onclick = () => {
     }
 };
 
-// --- Main Gift Page JS ---
+// --- Main Gift Page ---
 const title = document.getElementById("mainTitle");
 const yesBtn = document.getElementById("yesButton");
 const noBtn = document.getElementById("noButton");
@@ -69,33 +69,30 @@ document.getElementById("giftFlower").onclick = () => showGift(flower);
 document.getElementById("giftHugs").onclick = () => showGift(hugs);
 
 // --- Floating flowers ---
-// Flower layer
-// Flower layer
 const flowerLayer = document.getElementById("flowerLayer");
-const activeFlowers = [];
 const maxFlowers = 30;
+const activeFlowers = [];
 
 function createFlower() {
-    if (activeFlowers.length >= maxFlowers) return; // prevent too many flowers
+    if (activeFlowers.length >= maxFlowers) return;
 
     const flower = document.createElement("div");
     flower.className = "floating-flower";
     flower.textContent = "🌸";
 
     flower.style.fontSize = 15 + Math.random() * 25 + "px";
-    flower.style.top = Math.random() * 80 + "%"; // anywhere vertically
+    flower.style.top = Math.random() * 80 + "%";
     flower.style.left = Math.random() * 90 + "%";
     flower.style.transition = "transform 6s linear, opacity 6s linear";
+
     flowerLayer.appendChild(flower);
     activeFlowers.push(flower);
 
-    // Animate flower across screen
     requestAnimationFrame(() => {
         flower.style.transform = "translateY(-150px) translateX(100px) rotate(360deg)";
         flower.style.opacity = 0;
     });
 
-    // Remove flower after animation
     setTimeout(() => {
         flower.remove();
         const index = activeFlowers.indexOf(flower);
@@ -103,7 +100,6 @@ function createFlower() {
     }, 6000);
 }
 
-// Smooth loop for creating flowers
 function animateFlowers() {
     createFlower();
     requestAnimationFrame(animateFlowers);
@@ -111,16 +107,3 @@ function animateFlowers() {
 
 // Start flowers once
 animateFlowers();
-
-// Start flowers only once to prevent interval stacking
-let flowersStarted = false;
-function startFlowersOnce() {
-    if (flowersStarted) return;
-    flowersStarted = true;
-
-    setInterval(() => createFlower(true), 800);   
-    setInterval(() => createFlower(false), 1200);
-}
-
-// Start floating flowers when page loads
-window.onload = startFlowersOnce;

@@ -105,7 +105,7 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
 /* --- Gift Popups --- */
 .gift-container {
     display: none;
-    position: fixed; /* stays static on screen */
+    position: fixed;       /* stays static */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -191,27 +191,17 @@ button:hover { transform: scale(1.05); opacity: 0.95; }
 #flowerLayer {
     position: fixed;
     inset: 0;
-    pointer-events: none; /* allows clicks to pass through */
+    pointer-events: none;
     overflow: hidden;
-    z-index: 10000; /* above popups */
+    z-index: 10000;
 }
 
 .floating-flower {
     position: absolute;
-    will-change: transform, opacity; /* performance optimization */
+    will-change: transform, opacity;
 }
 
-/* --- Original floating flower animations --- */
-@keyframes floatTop {
-    0% { transform: translateX(-10%) translateY(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    100% { transform: translateX(110%) translateY(0) rotate(360deg); opacity: 0; }
-}
-@keyframes floatBottom {
-    0% { transform: translateX(110%) translateY(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    100% { transform: translateX(-10%) translateY(0) rotate(-360deg); opacity: 0; }
-}
+/* --- Floating flower animations will be handled by JS using transform & opacity --- */
 
 /* --- Responsive --- */
 @media (max-width: 600px) {
